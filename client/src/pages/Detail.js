@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+import Cart from '../components/Cart';
 
 import { useStoreContext } from '../utils/GlobalState';
-import { UPDATE_PRODUCTS } from '../utils/actions';
+import { 
+  REMOVE_FROM_CART, 
+  UPDATE_CART_QUANTITY, 
+  ADD_TO_CART,
+  UPDATE_PRODUCTS 
+} from '../utils/actions';
 import { QUERY_PRODUCTS } from '../utils/queries';
 import spinner from '../assets/spinner.gif';
 
@@ -28,6 +34,13 @@ function Detail() {
     }
   }, [products, data, dispatch, id]);
 
+  const addToCart = () => {
+    dispatch({
+      type: ADD_TO_CART,
+      product: { ...currentProduct, purchaseQuantity: 1 }
+    });
+  };
+
   return (
     <>
       {currentProduct ? (
@@ -39,8 +52,8 @@ function Detail() {
           <p>{currentProduct.description}</p>
 
           <p>
-            <strong>Price:</strong>${currentProduct.price}{' '}
-            <button>Add to Cart</button>
+            <strong>Price:</strong>{currentProduct.price}{' '}
+            <button onClick={addToCart}>Add to Cart</button>
             <button>Remove from Cart</button>
           </p>
 
@@ -51,6 +64,7 @@ function Detail() {
         </div>
       ) : null}
       {loading ? <img src={spinner} alt="loading" /> : null}
+      <Cart />
     </>
   );
 }
