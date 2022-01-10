@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { UPDATE_CART_QUANTITY, UPDATE_CATEGORIES, UPDATE_CURRENT_CATEGORY } from '../../utils/actions';
+import { UPDATE_CATEGORIES, UPDATE_CURRENT_CATEGORY } from '../../utils/features/categories/categoriesSlice';
+import { UPDATE_CART_QUANTITY } from '../../utils/features/categories/categoriesSlice';
 import { useQuery } from '@apollo/client';
-import { QUERY_CATEGORIES } from '../../utils/queries';
+import { QUERY_CATEGORIES } from '../../utils/features/queries';
 import { idbPromise } from '../../utils/helpers';
-import { useStoreContext } from '../../utils/GlobalState';
 
 function CategoryMenu() {
   const [state, dispatch] = useStoreContext();

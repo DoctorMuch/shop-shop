@@ -15,7 +15,6 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Success from './pages/Success';
 import Nav from './components/Nav';
-import { StoreProvider } from './utils/GlobalState';
 import OrderHistory from './pages/OrderHistory';
 
 const httpLink = createHttpLink({
@@ -39,24 +38,20 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div>
-          <StoreProvider>
-            <Nav />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/orderHistory" component={OrderHistory} />
-              <Route exact path="/products/:id" component={Detail} />
-              <Route exact path="/success" component={Success} />
-              <Route component={NoMatch} />
-            </Switch>
-          </StoreProvider>
-        </div>
-      </Router>
-    </ApolloProvider>
+    <Router>
+      <div>
+          <Nav />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/orderHistory" component={OrderHistory} />
+            <Route exact path="/products/:id" component={Detail} />
+            <Route exact path="/success" component={Success} />
+            <Route component={NoMatch} />
+          </Switch>
+      </div>
+    </Router>
   );
 }
 
