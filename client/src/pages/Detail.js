@@ -6,9 +6,9 @@ import { idbPromise } from '../utils/helpers';
 import {
   REMOVE_FROM_CART,
   UPDATE_CART_QUANTITY,
-  ADD_TO_CART,
-  UPDATE_PRODUCTS
-} from '../utils/actions';
+  ADD_TO_CART
+} from '../utils/features/carts/cartsSlice';
+import { UPDATE_PRODUCTS } from '../utils/features/products/productsSlice';
 import { QUERY_PRODUCTS } from '../utils/queries';
 import spinner from '../assets/spinner.gif';
 

@@ -12,12 +12,11 @@ const categoriesSlice = createSlice({
   initialState,
   reducers: {
     UPDATE_CATEGORIES(state, action) {
-      const categories = action.payload;
-      state.entities = categories
+      state.categories = action.payload;
+
     },
     UPDATE_CURRENT_CATEGORY(state, action) {
-      const currentCategory = action.payload;
-      state.entities = currentCategory
+      state.currentCategory = action.payload;
     },
   }
 })
